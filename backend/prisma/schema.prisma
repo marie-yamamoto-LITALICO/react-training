@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model TodoApp {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @db.VarChar(255)
+  todos     Todo[]
+}
+
+model Todo {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  name       String   @db.VarChar(255)
+  isArchived Boolean  @default(false)
+  labels     Label[]  @relation("todo_labels")
+  todoApp    TodoApp  @relation(fields: [todoAppId], references: [id])
+  todoAppId  Int
+
+  todoLabels TodoLabel[]
+  @@map(name: "todos")
+}
+
+model Label {
+  id        Int         @id @default(autoincrement())
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  name      String      @db.VarChar(255)
+  todos     Todo[]      @relation("todo_labels")
+  TodoLabel TodoLabel[]
+
+  @@map(name: "labels")
+}
+
+model TodoLabel {
+  todoId    Int
+  todo      Todo     @relation(fields: [todoId], references: [id])
+  labelId   Int
+  label     Label    @relation(fields: [labelId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([todoId, labelId])
+  @@map(name: "todo_labels")
+}

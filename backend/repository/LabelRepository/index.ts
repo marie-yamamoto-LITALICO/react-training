@@ -1,0 +1,1 @@
+export { LabelRepositoryImpl } from './LabelRepository'
