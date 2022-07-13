@@ -1,11 +1,18 @@
 import { Todo } from './Todo';
 
-export function TodoList() {
+export function TodoList(props) {
   return (
     //  <!-- 4. TodoアプリのメインとなるTodoリスト --> 
     <div className="todo-list">
-      {/* <!-- 動的に更新されるTodoリスト --> */}
-      <Todo></Todo>
+      {props.todoItems && 
+        <ul>
+          {
+            props.todoItems.map((todoItem, index) => {
+              return (<li key={index}><Todo item={todoItem}></Todo></li>)
+            })
+          }
+        </ul>
+      }
     </div>
   );
 }
