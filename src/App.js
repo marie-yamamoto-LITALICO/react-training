@@ -22,7 +22,7 @@ export function App() {
     <div className="todoapp">
       <Form handleSubmit={handleSubmit}></Form>
       <TodoList todoItems={state.todoItems}></TodoList>
-      <Footer></Footer>
+      <Footer todoItems={state.todoItems}></Footer>
     </div>
   );
 }
