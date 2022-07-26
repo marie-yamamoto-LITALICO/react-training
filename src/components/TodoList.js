@@ -8,7 +8,7 @@ export function TodoList(props) {
         <ul>
           {
             props.todoItems.map((todoItem, index) => {
-              return (<li key={index}><Todo item={todoItem}></Todo></li>)
+              return (<li key={index}><Todo item={todoItem}/></li>)
             })
           }
         </ul>

@@ -20,9 +20,9 @@ export function App() {
   return (
     // <!-- 2. class属性をCSSのために指定 -->
     <div className="todoapp">
-      <Form handleSubmit={handleSubmit}></Form>
-      <TodoList todoItems={state.todoItems}></TodoList>
-      <Footer todoItems={state.todoItems}></Footer>
+      <Form handleSubmit={handleSubmit}/>
+      <TodoList todoItems={state.todoItems}/>
+      <Footer todoItems={state.todoItems}/>
     </div>
   );
 }
