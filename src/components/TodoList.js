@@ -6,9 +6,7 @@ export function TodoList(props) {
     <div className="todo-list">
         <ul>
           {
-            props.todoItems.map((todoItem, index) => {
-              return (<li key={index}><Todo item={todoItem}/></li>)
-            })
+            props.todoItems.map((todoItem, index) => <li key={index}><Todo item={todoItem}/></li>)
           }
         </ul>
     </div>
