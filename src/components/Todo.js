@@ -1,6 +1,7 @@
-export function Todo() {
+export function Todo(props) {
   return (
-    <div></div>
-    // <!-- 動的に更新されるTodoリスト -->
+    <div>
+      {props.item}
+    </div>
   );
 }
