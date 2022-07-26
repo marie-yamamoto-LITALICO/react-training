@@ -7,13 +7,12 @@ export function App() {
   console.log("App initialized")
 
   // stateを定義する
-  const initialList = {todoItems: []};
-  const [state, setState] = useState(initialList);
+  const [todoItems, setTodoItems] = useState([]);
 
   const handleSubmit = (inputValue) => {
-    setState((currentState) => {
-      const todoItems = currentState.todoItems;
-      return {todoItems: [...todoItems, inputValue]};
+    setTodoItems((currentState) => {
+      const todoItems = currentState;
+      return [...todoItems, inputValue];
     });
   }
 
@@ -21,8 +20,8 @@ export function App() {
     // <!-- 2. class属性をCSSのために指定 -->
     <div className="todoapp">
       <Form handleSubmit={handleSubmit}/>
-      <TodoList todoItems={state.todoItems}/>
-      <Footer todoItems={state.todoItems}/>
+      <TodoList todoItems={todoItems}/>
+      <Footer todoItems={todoItems}/>
     </div>
   );
 }
